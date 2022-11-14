@@ -33,7 +33,7 @@ class QuanLy {
                 return (element.name === name)
             }
         )
-
+        console.log('Sản phẩm cần tìm :')
         console.table(newData)
     }
 
@@ -43,7 +43,7 @@ class QuanLy {
                 return (element.brand === brand)
             }
         )
-
+        console.log('Các sản phẩm của ' + brand + ':')
         console.table(newData)
     }
 
@@ -65,15 +65,23 @@ class QuanLy {
     }
 
 
-    static findMax() {
-        let i = Math.max(...QuanLy.listPhone.map((i) => i.price))
-        return i
+    static findPriceMax() {
+
+        return Math.max(...QuanLy.listPhone.map((i) => i.price))
     }
 
     static findMaxPhone() {
-        let phone = QuanLy.listPhone.filter(element => element.price === this.findMax())
+        let phone = QuanLy.listPhone.filter(element => element.price === this.findPriceMax())
+        console.log('Sản phẩm có giá cao nhât :')
         console.table(phone)
     }
+
+    static findPhone() {
+        let phone = QuanLy.listPhone.filter(element => 15_000_000 < element.price && element.price < 40_000_000)
+        console.log('Các sản phẩm phù hợp mức giá :')
+        console.table(phone)
+    }
+
 }
 
 
@@ -91,10 +99,12 @@ QuanLy.add(note22)
 QuanLy.add(note22UT)
 QuanLy.add(nokia1280)
 QuanLy.add(nokia110i)
-QuanLy.display()   // Hiển thị sản phẩm
-QuanLy.delete(6)  // Xóa sản phảm
-QuanLy.find('Iphone13')  // Tìm sản hẩm theo tên
-QuanLy.findBrand('Samsung') // Tìm sản phẩm theo brand
-QuanLy.edit(1, iphone14)  // Sửa sản phẩm
-QuanLy.Total(note22, note22UT)  // Tổng tiền các sản phẩm chọn mua
-QuanLy.findMaxPhone() // Sản phẩm giá cao nhất
+QuanLy.display()
+QuanLy.delete(6)
+QuanLy.find('Iphone13')
+QuanLy.findBrand('Samsung')
+QuanLy.edit(1, iphone14)
+QuanLy.Total(note22, note22UT)
+QuanLy.findMaxPhone()
+QuanLy.findPhone()
+
