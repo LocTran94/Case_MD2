@@ -9,7 +9,7 @@ class QuanLy {
     static listPhone: any [] = []
     static listTotal: any [] = []
 
-    static add(phone: any): void {
+    static add(phone: Phone): void {
         QuanLy.listPhone.push(phone)
     }
 
@@ -28,7 +28,7 @@ class QuanLy {
 
     static find(name: string): void {
 
-        let newData:object = QuanLy.listPhone.filter(element => {
+        let newData: object = QuanLy.listPhone.filter(element => {
 
                 return (element.name === name)
             }
@@ -39,7 +39,7 @@ class QuanLy {
 
 
     static findBrand(brand: string) {
-        let newData:object = QuanLy.listPhone.filter(element => {
+        let newData: object = QuanLy.listPhone.filter(element => {
                 return (element.brand === brand)
             }
         )
@@ -63,6 +63,17 @@ class QuanLy {
         }
         return this.display()
     }
+
+
+    static findMax() {
+        let i = Math.max(...QuanLy.listPhone.map((i) => i.price))
+        return i
+    }
+
+    static findMaxPhone() {
+        let phone = QuanLy.listPhone.filter(element => element.price === this.findMax())
+        console.table(phone)
+    }
 }
 
 
@@ -80,10 +91,10 @@ QuanLy.add(note22)
 QuanLy.add(note22UT)
 QuanLy.add(nokia1280)
 QuanLy.add(nokia110i)
-QuanLy.display()
-QuanLy.delete(6);
-QuanLy.find('Iphone13')
-QuanLy.findBrand('Samsung')
-QuanLy.edit(1, iphone14)
-QuanLy.Total(note22, note22UT)
-
+QuanLy.display()   // Hiển thị sản phẩm
+QuanLy.delete(6)  // Xóa sản phảm
+QuanLy.find('Iphone13')  // Tìm sản hẩm theo tên
+QuanLy.findBrand('Samsung') // Tìm sản phẩm theo brand
+QuanLy.edit(1, iphone14)  // Sửa sản phẩm
+QuanLy.Total(note22, note22UT)  // Tổng tiền các sản phẩm chọn mua
+QuanLy.findMaxPhone() // Sản phẩm giá cao nhất
